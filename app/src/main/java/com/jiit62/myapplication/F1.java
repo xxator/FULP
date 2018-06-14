@@ -17,18 +17,25 @@ public class F1 extends AppCompatActivity {
     }
     public void focus(View v)
     {
-        Intent intenti = new Intent(F1.this,RT.class);
+        Intent intentRT = new Intent(F1.this,RT.class);
+        Intent intentBT = new Intent(F1.this,BT.class);
         EditText session = (EditText)findViewById(R.id.sessions);
         int sessions = Integer.parseInt(String.valueOf(session.getText()));
         EditText runT = (EditText)findViewById(R.id.runT);
         int runTime = Integer.parseInt(String.valueOf(runT.getText()));
         EditText breakT = (EditText)findViewById(R.id.Break);
         int bTime = Integer.parseInt(String.valueOf(breakT.getText()));
+        int i;
+        for(i=0;i<sessions;i++)
+        {
+            intentRT.putExtra("runtime",runTime);
+            intentRT.putExtra("breaktime",bTime);
+            startActivity(intentRT);
+        }
+        //intenti.putExtra("sessions",sessions);
+        //intenti.putExtra("runTime",runTime);
+        //intenti.putExtra("Break",bTime);
 
-        intenti.putExtra("sessions",sessions);
-        intenti.putExtra("runTime",runTime);
-        intenti.putExtra("Break",bTime);
-        startActivity(intenti);
 
     }
 }

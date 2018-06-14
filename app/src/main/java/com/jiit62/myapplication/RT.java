@@ -27,12 +27,10 @@ public class RT extends AppCompatActivity {
      public void timere(Intent intent)
      {
          final TextView textView = (TextView)findViewById(R.id.timer);
-            final int session =intent.getIntExtra("sessions",0);
-            final int runT =intent.getIntExtra("runTime",0)*60*1000;
+         final int runT =intent.getIntExtra("runtime",0)*60*1000;
          final int counter = runT / 1000;
          final RelativeLayout layout = (RelativeLayout)findViewById(R.id.runT);
-            final int Break =intent.getIntExtra("Break",0)*60*1000;
-            CountDownTimer count= new  CountDownTimer(runT, 1000){
+         CountDownTimer count= new  CountDownTimer(runT, 1000){
                     int timerc = 0;
                     public void onTick(long millisUntilFinished){
                     textView.setText(String.valueOf(counter-timerc));
@@ -49,7 +47,7 @@ public class RT extends AppCompatActivity {
                     final Intent intent2=new Intent(RT.this,BT.class);
                     button.setOnClickListener(new Button.OnClickListener(){
                         public void onClick(View v){
-                            final int Break =getIntent().getIntExtra("Break",0)*60*1000;
+                            final int Break =getIntent().getIntExtra("breaktime",0)*60*1000;
                             intent2.putExtra("breaktime",Break);
                             startActivity(intent2);
                         }
