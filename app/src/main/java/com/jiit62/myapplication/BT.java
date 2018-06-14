@@ -1,5 +1,6 @@
 package com.jiit62.myapplication;
 
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -25,20 +26,47 @@ public class BT extends AppCompatActivity {
         final int Break = intent.getIntExtra("breaktime",0);
         final String LOG_TAG = BT.class.getSimpleName();
         Log.i(LOG_TAG,String.valueOf(Break));
+
         final TextView textView = (TextView)findViewById(R.id.timer2);
         final RelativeLayout layout = (RelativeLayout)findViewById(R.id.BT);
-        CountDownTimer count = new CountDownTimer(Break*1000,1000)
+        final CountDownTimer count = new CountDownTimer(Break*1000,1000)
         {
             int counter=0;
-
+            int ri= 255;
+            int gi = 0;
+            int rf = 0;
+            int gf = 255;
+            int bi = 34;
+            int bf = 98;
+            final int changingSpeed = 5;
             @Override
             public void onTick(long millisUntilFinished) {
                 textView.setText(String.valueOf(Break-counter));
                 counter++;
-                if(Break-counter>10)
-                    layout.setBackgroundColor(Color.GREEN);
-                else
-                    layout.setBackgroundColor(Color.RED);
+                // step 2
+                double dr = (rf - ri);
+                double dg = (gf - gi);
+                double db = (bf - bi);
+
+
+                // step 3
+                double norm = Math.sqrt(dr*dr+dg*dg+db*db);
+                dr /= norm;
+                dg /= norm;
+                db /= norm;
+                // step 4
+                dr *= Math.min(changingSpeed, norm);
+                dg *= Math.min(changingSpeed, norm);
+                db *= Math.min(changingSpeed, norm);
+
+                // step 5
+                ri += dr;
+                gi += dg;
+                bi += db;
+
+
+                //layout.setBackgroundColor(Color.rgb(ri,gi,bi));
+
             }
 
             @Override

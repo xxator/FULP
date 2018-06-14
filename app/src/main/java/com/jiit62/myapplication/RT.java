@@ -32,10 +32,40 @@ public class RT extends AppCompatActivity {
          final RelativeLayout layout = (RelativeLayout)findViewById(R.id.runT);
          CountDownTimer count= new  CountDownTimer(runT*1000, 1000){
                     int timerc = 0;
+             int ri= 150;
+             int gi = 0;
+             int rf = 0;
+             int gf = 200;
+             int bi = 0;
+             int bf = 0;
+             final int changingSpeed = runT/(350);
                     public void onTick(long millisUntilFinished){
                     textView.setText(String.valueOf(runT-timerc));
                         timerc++;
-                        if(timerc<=(runT/3))
+                        double dr = (rf - ri);
+                        double dg = (gf - gi);
+                        double db = (bf - bi);
+
+
+                        // step 3
+                        double norm = Math.sqrt(dr*dr+dg*dg+db*db);
+                        dr /= norm;
+                        dg /= norm;
+                        db /= norm;
+                        // step 4
+                        dr *= Math.min(changingSpeed, norm);
+                        dg *= Math.min(changingSpeed, norm);
+                        db *= Math.min(changingSpeed, norm);
+
+                        // step 5
+                        ri += dr;
+                        gi += dg;
+                        bi += db;
+
+
+                        layout.setBackgroundColor(Color.rgb(ri,gi,bi));
+
+                        /*if(timerc<=(runT/3))
                         {
                             layout.setBackgroundColor(Color.GREEN);
                         }
@@ -46,7 +76,7 @@ public class RT extends AppCompatActivity {
                         else
                         {
                             layout.setBackgroundColor(Color.RED);
-                        }
+                        }*/
 
             }
                 public  void onFinish()
