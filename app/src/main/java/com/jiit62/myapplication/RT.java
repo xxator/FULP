@@ -27,29 +27,38 @@ public class RT extends AppCompatActivity {
      public void timere(Intent intent)
      {
          final TextView textView = (TextView)findViewById(R.id.timer);
-         final int runT =intent.getIntExtra("runtime",0)*60*1000;
-         final int counter = runT / 1000;
+         final int runT =intent.getIntExtra("runtime",0);
+
          final RelativeLayout layout = (RelativeLayout)findViewById(R.id.runT);
-         CountDownTimer count= new  CountDownTimer(runT, 1000){
+         CountDownTimer count= new  CountDownTimer(runT*1000, 1000){
                     int timerc = 0;
                     public void onTick(long millisUntilFinished){
-                    textView.setText(String.valueOf(counter-timerc));
+                    textView.setText(String.valueOf(runT-timerc));
                         timerc++;
-                        if(timerc<(counter/3))
+                        if(timerc<=(runT/3))
                         {
                             layout.setBackgroundColor(Color.GREEN);
                         }
+                        else if(timerc>(runT/3)&&timerc<2*(runT/3))
+                        {
+                            layout.setBackgroundColor(Color.YELLOW);
+                        }
+                        else
+                        {
+                            layout.setBackgroundColor(Color.RED);
+                        }
+
             }
                 public  void onFinish()
                 {
                     textView.setText("FINISH!!");
                     Button button = (Button)findViewById(R.id.start);
-                    final Intent intent2=new Intent(RT.this,BT.class);
+                    //final Intent intent2=new Intent(RT.this,F1.class);
                     button.setOnClickListener(new Button.OnClickListener(){
                         public void onClick(View v){
-                            final int Break =getIntent().getIntExtra("breaktime",0)*60*1000;
-                            intent2.putExtra("breaktime",Break);
-                            startActivity(intent2);
+                            //final int Break =getIntent().getIntExtra("breaktime",0)*60*1000;
+                            //intent2.putExtra("breaktime",Break);
+                            finish();
                         }
 
                     });

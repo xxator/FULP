@@ -27,14 +27,18 @@ public class BT extends AppCompatActivity {
         Log.i(LOG_TAG,String.valueOf(Break));
         final TextView textView = (TextView)findViewById(R.id.timer2);
         final RelativeLayout layout = (RelativeLayout)findViewById(R.id.BT);
-        CountDownTimer count = new CountDownTimer(Break,1000)
+        CountDownTimer count = new CountDownTimer(Break*1000,1000)
         {
             int counter=0;
 
             @Override
             public void onTick(long millisUntilFinished) {
-                textView.setText(String.valueOf((Break/1000)-counter++));
-                layout.setBackgroundColor(Color.GREEN);
+                textView.setText(String.valueOf(Break-counter));
+                counter++;
+                if(Break-counter>10)
+                    layout.setBackgroundColor(Color.GREEN);
+                else
+                    layout.setBackgroundColor(Color.RED);
             }
 
             @Override
