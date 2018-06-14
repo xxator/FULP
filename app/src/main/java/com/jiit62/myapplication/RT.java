@@ -32,13 +32,13 @@ public class RT extends AppCompatActivity {
          final RelativeLayout layout = (RelativeLayout)findViewById(R.id.runT);
          CountDownTimer count= new  CountDownTimer(runT*1000, 1000){
                     int timerc = 0;
-             int ri= 150;
+             int ri= 100;
              int gi = 0;
              int rf = 0;
-             int gf = 200;
+             int gf = 250;
              int bi = 0;
              int bf = 0;
-             final int changingSpeed = runT/(350);
+             final int changingSpeed = runT/(30);
                     public void onTick(long millisUntilFinished){
                     textView.setText(String.valueOf(runT-timerc));
                         timerc++;
@@ -63,7 +63,7 @@ public class RT extends AppCompatActivity {
                         bi += db;
 
 
-                        layout.setBackgroundColor(Color.rgb(ri,gi,bi));
+                        layout.setBackgroundColor(Color.rgb(ri,gi,100-ri));
 
                         /*if(timerc<=(runT/3))
                         {
