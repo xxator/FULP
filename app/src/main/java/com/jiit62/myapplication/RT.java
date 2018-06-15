@@ -32,38 +32,26 @@ public class RT extends AppCompatActivity {
          final RelativeLayout layout = (RelativeLayout)findViewById(R.id.runT);
          CountDownTimer count= new  CountDownTimer(runT*1000, 1000){
                     int timerc = 0;
-             int ri= 100;
-             int gi = 0;
-             int rf = 0;
-             int gf = 250;
+             int ri= 0;
+             int gi = 250;
+             int rf = 100;
+             int gf = 0;
              int bi = 0;
              int bf = 0;
-             final int changingSpeed = runT/(30);
+             int rs = (rf-ri)/runT;
+             int gs = (gf-gi)/runT;
+             int bs = (bf-bi)/runT;
+             //final int changingSpeed = runT/(30);
                     public void onTick(long millisUntilFinished){
-                    textView.setText(String.valueOf(runT-timerc));
+                    textView.setText(String.valueOf(ri + " " + gi + " " + bi));
                         timerc++;
-                        double dr = (rf - ri);
-                        double dg = (gf - gi);
-                        double db = (bf - bi);
 
 
-                        // step 3
-                        double norm = Math.sqrt(dr*dr+dg*dg+db*db);
-                        dr /= norm;
-                        dg /= norm;
-                        db /= norm;
-                        // step 4
-                        dr *= Math.min(changingSpeed, norm);
-                        dg *= Math.min(changingSpeed, norm);
-                        db *= Math.min(changingSpeed, norm);
+                        layout.setBackgroundColor(Color.rgb(ri,gi,0));
+                        ri += rs;
+                        gi += gs;
+                        bi += bs;
 
-                        // step 5
-                        ri += dr;
-                        gi += dg;
-                        bi += db;
-
-
-                        layout.setBackgroundColor(Color.rgb(ri,gi,100-ri));
 
                         /*if(timerc<=(runT/3))
                         {

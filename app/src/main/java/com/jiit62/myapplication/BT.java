@@ -32,40 +32,28 @@ public class BT extends AppCompatActivity {
         final CountDownTimer count = new CountDownTimer(Break*1000,1000)
         {
             int counter=0;
-            int ri= 255;
-            int gi = 0;
-            int rf = 0;
-            int gf = 255;
-            int bi = 34;
-            int bf = 98;
+            int ri= 0;
+            int gi = 250;
+            int rf = 100;
+            int gf = 0;
+            int bi = 0;
+            int bf = 0;
+            int rs = (rf-ri)/Break;
+            int gs = (gf-gi)/Break;
+            int bs = (bf-bi)/Break;
             final int changingSpeed = 5;
             @Override
             public void onTick(long millisUntilFinished) {
                 textView.setText(String.valueOf(Break-counter));
                 counter++;
                 // step 2
-                double dr = (rf - ri);
-                double dg = (gf - gi);
-                double db = (bf - bi);
 
+                layout.setBackgroundColor(Color.rgb(ri,gi,0));
+                ri += rs;
+                gi += gs;
+                bi += bs;
 
-                // step 3
-                double norm = Math.sqrt(dr*dr+dg*dg+db*db);
-                dr /= norm;
-                dg /= norm;
-                db /= norm;
-                // step 4
-                dr *= Math.min(changingSpeed, norm);
-                dg *= Math.min(changingSpeed, norm);
-                db *= Math.min(changingSpeed, norm);
-
-                // step 5
-                ri += dr;
-                gi += dg;
-                bi += db;
-
-
-                //layout.setBackgroundColor(Color.rgb(ri,gi,bi));
+                layout.setBackgroundColor(Color.rgb(ri,gi,bi));
 
             }
 
