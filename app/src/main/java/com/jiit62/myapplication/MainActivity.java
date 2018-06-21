@@ -20,5 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void Practice(View v)
+    {
+        Intent intent = new Intent(this,P.class);
+        startActivity(intent);
+    }
+
 }
 

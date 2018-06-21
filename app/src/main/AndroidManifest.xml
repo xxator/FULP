@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".F1" />
         <activity android:name=".RT" />
-        <activity android:name=".BT"></activity>
+        <activity android:name=".BT" />
+        <activity android:name=".P" />
+        <activity android:name=".P2"></activity>
     </application>
 
 </manifest>

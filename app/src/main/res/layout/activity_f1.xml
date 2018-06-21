@@ -12,7 +12,9 @@
         android:id="@+id/sessions"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="35dp"
+
+        android:inputType="number"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +22,8 @@
         android:hint="Run Time"
         android:layout_marginTop="36dp"
         android:layout_below="@+id/sessions"
-        android:layout_alignStart="@+id/Break" />
+        android:layout_alignStart="@+id/Break"
+        android:inputType="number"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +31,8 @@
         android:hint="break Time"
         android:layout_marginTop="32dp"
         android:layout_below="@+id/runT"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/button2"
