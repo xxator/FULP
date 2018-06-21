@@ -29,9 +29,9 @@ public class P2 extends AppCompatActivity {
         max=intent.getIntExtra("Max",0);
         bonus  =intent.getIntExtra("Bonus",0);
         time  =intent.getIntExtra("Time",0);
-        int[] g = new int[n];
-        int[] y = new int[n];
-        int[] r = new int[n];
+
+
+
         CountDownTimer count = new CountDownTimer(max*1000,1000) {
             int counter=0;
             TextView timer = (TextView)findViewById(R.id.Timer);
